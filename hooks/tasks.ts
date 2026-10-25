@@ -2,11 +2,13 @@ import type { Task } from '../types'
 
 export type Change = { add?: { title: string; steps?: string[] }[]; remove?: string[] }
 
-export function apply(tasks: Task[], change: Change): Task[] {
+// Random, so two sessions adding to one project never mint the same id.
+export const randomId = () => `t${crypto.getRandomValues(new Uint16Array(1))[0]!.toString(36)}`
+
+export function apply(tasks: Task[], change: Change, newId = randomId): Task[] {
   const removed = new Set(change.remove ?? [])
-  let last = Math.max(0, ...tasks.map(t => Number(t.id.slice(1)) || 0))
   const added = (change.add ?? []).map(({ title, steps = [] }) => ({
-    id: `t${++last}`,
+    id: newId(),
     title,
     steps,
     isDone: false,

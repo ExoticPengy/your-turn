@@ -1,8 +1,8 @@
 # your-turn
 
-A Claude Code mod for the steps only you can do. When Claude needs you to do something by hand (a manual test, a UI check, a login, a browser or hardware step), it adds a task with short numbered steps to a "Your turn" band above the prompt. Mark a task `done` in the band; every prompt you send carries the task list, so Claude sees what you finished and removes it.
+A Claude Code mod for the steps only you can do. When Claude needs you to do something by hand (a manual test, a UI check, a login, a browser or hardware step), it adds a task with short numbered steps to a "Your turn" band above the prompt. Mark a task `done` in the band, or `✕` to dismiss it; every prompt you send carries the task list, so Claude sees what you finished and removes it.
 
-Claude manages the list through the `mcp__your-turn__your_turn` tool (`add` tasks with a title and 1-5 steps, `remove` them by id). Tasks last for the session.
+Claude manages the list through the `mcp__your-turn__your_turn` tool (`add` tasks with a title and 1-5 steps, `remove` them by id). Tasks are saved per project (the git repository's root, else the folder Claude started in) and shared by every session there; a new session restores the open ones and drops those already marked done.
 
 ## Install
 
