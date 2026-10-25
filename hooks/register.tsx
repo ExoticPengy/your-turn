@@ -10,7 +10,7 @@ const tasks = atom({ plugin: 'your-turn', key: 'tasks' } as const, [] as Task[],
   shape: 'tasks-1',
 })
 
-const GUIDE = `Shows the user tasks only they can do in a band above their prompt. Whenever the user must do something themselves (a manual test, checking the UI or a game in Studio, a login, a browser or hardware step, a decision in another app), call this with \`add\` instead of only writing it in your reply: one task per thing, a title under 60 characters and 1-5 steps, each one imperative line with exact commands, paths or values; still mention it briefly in your reply. Each user prompt carries the task list: \`remove\` a task as soon as it is done (the user marked it, or said so) or no longer needed, and never leave stale tasks. Returns the current list.`
+const GUIDE = `Shows the user tasks only they can do in a band above their prompt. Whenever the user must do something themselves (a manual test, checking the UI or a game in Studio, a login, a browser or hardware step, a decision in another app), call this with \`add\` instead of only writing it in your reply: one task per thing, a title under 60 characters and 1-5 steps, each one imperative line with exact commands, paths or values. The band shows the task to the user, so do not repeat the task or its steps in your reply: at most one short line pointing to the band; the user asks if they want more. Each user prompt carries the task list: \`remove\` a task as soon as it is done (the user marked it, or said so) or no longer needed, and never leave stale tasks. Returns the current list.`
 
 let projectKey: string | undefined
 
@@ -77,7 +77,7 @@ export const register: Register = on => {
   on('tool.call', { tool: TOOL }, async ($, e) => {
     const list = await change($, list => apply(list, e as unknown as Change))
 
-    return { result: describe(list) }
+    return { result: `${describe(list)}\nShown in the band; do not repeat these steps in your reply.` }
   })
 
   on('prompt.submit', async ($, e, next) => {
