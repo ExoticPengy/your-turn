@@ -1,0 +1,5 @@
+{
+  "name": "your-turn",
+  "owner": { "name": "ExoticPengy" },
+  "plugins": [{ "name": "your-turn", "source": "./" }]
+}
