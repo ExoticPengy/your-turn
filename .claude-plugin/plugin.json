@@ -1,1 +1,10 @@
-{ "name": "your-turn", "version": "0.3.0", "description": "Band listing the manual steps Claude needs you to do, kept in sync by Claude", "types": "./types/index.d.ts" }
+{
+  "name": "your-turn",
+  "version": "0.3.1",
+  "description": "Band listing the manual steps Claude needs you to do, kept in sync by Claude",
+  "author": { "name": "ExoticPengy", "url": "https://github.com/ExoticPengy" },
+  "license": "MIT",
+  "repository": "https://github.com/ExoticPengy/your-turn",
+  "homepage": "https://github.com/ExoticPengy/your-turn",
+  "types": "./types/index.d.ts"
+}

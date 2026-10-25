@@ -22,8 +22,10 @@ claude plugin install your-turn --marketplace ExoticPengy/your-turn
 
 In the desktop app: click + next to the prompt box, then Plugins, Add marketplace with `ExoticPengy/your-turn`, then Add plugin.
 
-This repository is private: installing needs read access to it on GitHub and a git credential for github.com on your machine (an SSH key, or `gh auth login` then `gh auth setup-git`).
-
 ## Use
 
 The band appears by itself when Claude adds a task. On the normal terminal screen, press ctrl+x then tab to reach the band and Enter on `done`; in fullscreen mode, click it.
+
+## License
+
+MIT
